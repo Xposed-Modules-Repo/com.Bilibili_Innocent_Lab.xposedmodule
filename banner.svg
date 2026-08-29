@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" viewBox="0 0 1280 320" role="img" aria-label="Bilibili Innocent Lab">
+  <title>Bilibili Innocent Lab</title>
+  <defs>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#FB7299"/>
+      <stop offset="1" stop-color="#00AEEC"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="320" fill="#0d1117"/>
+  <rect width="1280" height="4" fill="url(#accent)"/>
+
+  <text x="92" y="138" font-family="'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif" font-size="20" letter-spacing="10" fill="#8b949e">BILIBILI</text>
+  <text x="90" y="200" font-family="'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif" font-size="54" font-weight="700" letter-spacing="1" fill="#e6edf3">INNOCENT <tspan fill="#FB7299">LAB</tspan></text>
+
+  <g>
+    <path d="M 1028 100 L 1000 52" stroke="#FB7299" stroke-width="5" stroke-linecap="round" fill="none"/>
+    <path d="M 1088 100 L 1116 52" stroke="#00AEEC" stroke-width="5" stroke-linecap="round" fill="none"/>
+    <circle cx="997" cy="47" r="6" fill="#FB7299"/>
+    <circle cx="1119" cy="47" r="6" fill="#00AEEC"/>
+    <rect x="950" y="100" width="220" height="150" rx="18" fill="#161b22" stroke="url(#accent)" stroke-width="4"/>
+    <rect x="972" y="122" width="176" height="106" rx="12" fill="#0d1117" stroke="#30363d" stroke-width="2"/>
+    <path d="M 1044 153 L 1044 197 L 1082 175 Z" fill="#FB7299">
+      <animate attributeName="opacity" values="0.7;1;0.7" dur="3s" repeatCount="indefinite"/>
+    </path>
+  </g>
+</svg>
