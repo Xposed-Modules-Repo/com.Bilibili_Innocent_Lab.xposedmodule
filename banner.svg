@@ -23,10 +23,16 @@
     @keyframes breathe { 0%, 100% { opacity: 0.78; } 50% { opacity: 1; } }
     /* 点阵涟漪：环形遮罩从电视中心向外扩散，扫过处的点依次鼓起变亮，两道波交替。 */
     .ripple { transform-box: view-box; transform-origin: 1060px 170px; opacity: 0;
-              animation: ripple 4.8s cubic-bezier(.2,.6,.35,1) infinite; }
-    .ripple.late { animation-delay: 2.4s; }
-    @keyframes ripple { 0% { transform: scale(.25); opacity: 0; } 12% { opacity: 1; }
-                        70% { opacity: .8; } 100% { transform: scale(4.6); opacity: 0; } }
+              animation: ripple 10s linear infinite; }
+    .ripple.late { animation-delay: 5s; }
+    /* 10s 一个周期：前 70%（7s）扩散，之后留白；两道错开 5s，即每 5s 发出一道。 */
+    @keyframes ripple {
+      0% { transform: scale(.25); opacity: 0; animation-timing-function: cubic-bezier(.25,.55,.4,1); }
+      8% { opacity: 1; }
+      50% { opacity: .8; }
+      70% { transform: scale(4.6); opacity: 0; }
+      100% { transform: scale(4.6); opacity: 0; }
+    }
     .antenna { transform-box: view-box; animation: wiggle 7s ease-in-out 2.4s infinite; }
     @keyframes wiggle { 0%, 82%, 100% { transform: rotate(0); } 87% { transform: rotate(-7deg); }
                         92% { transform: rotate(4deg); } 96% { transform: rotate(-2deg); } }
