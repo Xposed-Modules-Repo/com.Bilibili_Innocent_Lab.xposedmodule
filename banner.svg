@@ -21,6 +21,12 @@
     @keyframes spin { to { transform: rotate(360deg); } }
     .play { animation: breathe 3.2s ease-in-out infinite; }
     @keyframes breathe { 0%, 100% { opacity: 0.78; } 50% { opacity: 1; } }
+    /* 点阵涟漪：环形遮罩从电视中心向外扩散，扫过处的点依次鼓起变亮，两道波交替。 */
+    .ripple { transform-box: view-box; transform-origin: 1060px 170px; opacity: 0;
+              animation: ripple 4.8s cubic-bezier(.2,.6,.35,1) infinite; }
+    .ripple.late { animation-delay: 2.4s; }
+    @keyframes ripple { 0% { transform: scale(.25); opacity: 0; } 12% { opacity: 1; }
+                        70% { opacity: .8; } 100% { transform: scale(4.6); opacity: 0; } }
     .antenna { transform-box: view-box; animation: wiggle 7s ease-in-out 2.4s infinite; }
     @keyframes wiggle { 0%, 82%, 100% { transform: rotate(0); } 87% { transform: rotate(-7deg); }
                         92% { transform: rotate(4deg); } 96% { transform: rotate(-2deg); } }
@@ -28,7 +34,7 @@
     /* 系统要求减少动态效果：全部静止在最终画面（只显示原字形）。 */
     @media (prefers-reduced-motion: reduce) {
       * { animation: none !important; }
-      .pen { display: none; }
+      .pen, .ripple-dots { display: none; }
     }
   </style>
   <defs>
@@ -36,6 +42,22 @@
     <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
       <circle cx="12" cy="12" r="1.2" fill="#8b949e"/>
     </pattern>
+    <!-- 涟漪层：与底层点阵同格同心，点更大更亮，平时被遮罩完全挡住 -->
+    <pattern id="dotsSwell" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="12" cy="12" r="2.3" fill="#c9d1d9"/>
+    </pattern>
+    <!-- 环形：中间与外侧透明，只有一圈柔和的亮带 -->
+    <radialGradient id="ringGrad">
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="0.7" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="0.85" stop-color="#fff" stop-opacity="1"/>
+      <stop offset="0.92" stop-color="#fff" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <mask id="rippleMask" maskUnits="userSpaceOnUse" x="0" y="0" width="1280" height="320">
+      <circle class="ripple" cx="1060" cy="170" r="100" fill="url(#ringGrad)"/>
+      <circle class="ripple late" cx="1060" cy="170" r="100" fill="url(#ringGrad)"/>
+    </mask>
     <!-- 以电视为中心向左淡出，左侧文字区域保持干净 -->
     <radialGradient id="fade" cx="1060" cy="170" r="640" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#fff" stop-opacity="0.85"/>
@@ -54,6 +76,9 @@
   <rect width="1280" height="320" fill="#0d1117"/>
   <rect width="1280" height="320" fill="url(#glow)"/>
   <rect width="1280" height="320" fill="url(#dots)" mask="url(#fadeMask)"/>
+  <g class="ripple-dots" mask="url(#fadeMask)">
+    <rect width="1280" height="320" fill="url(#dotsSwell)" mask="url(#rippleMask)"/>
+  </g>
 
   <!-- 同心圆弧：以电视为中心，越外越淡 -->
   <g fill="none" stroke-width="1">
