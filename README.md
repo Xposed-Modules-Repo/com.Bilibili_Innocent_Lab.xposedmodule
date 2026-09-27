@@ -2,7 +2,7 @@
 
 <img src="banner.svg" alt="Bilibili Innocent Lab" width="100%">
 
-[![稳定版](https://img.shields.io/github/v/release/jichuo1/Bilibili_Innocent_Lab?style=flat-square&color=FB7299&label=%E7%A8%B3%E5%AE%9A%E7%89%88)](https://github.com/jichuo1/Bilibili_Innocent_Lab/releases)
+[![稳定版](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjichuo1%2FBilibili_Innocent_Lab%2Fbadges%2Fstable.json&style=flat-square)](https://github.com/jichuo1/Bilibili_Innocent_Lab/releases/latest)
 [![License](https://img.shields.io/github/license/jichuo1/Bilibili_Innocent_Lab?style=flat-square&color=00AEEC)](https://github.com/jichuo1/Bilibili_Innocent_Lab/blob/main/LICENSE)
 [![平台](https://img.shields.io/badge/Android-8.1%2B-2d3a55?style=flat-square&labelColor=2d3a55)](#环境要求)
 [![框架](https://img.shields.io/badge/Xposed-LSPosed-00AEEC?style=flat-square&labelColor=2d3a55)](#环境要求)
