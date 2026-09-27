@@ -1,13 +1,53 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" viewBox="0 0 1280 320" role="img" aria-label="Bilibili Innocent Lab">
   <title>Bilibili Innocent Lab</title>
+  <defs>
+    <!-- 点阵：24px 间距的细点 -->
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="12" cy="12" r="1.2" fill="#8b949e"/>
+    </pattern>
+    <!-- 以电视为中心向左淡出，左侧文字区域保持干净 -->
+    <radialGradient id="fade" cx="1060" cy="175" r="640" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff" stop-opacity="0.85"/>
+      <stop offset="0.55" stop-color="#fff" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <mask id="fadeMask">
+      <rect width="1280" height="320" fill="url(#fade)"/>
+    </mask>
+    <radialGradient id="glow" cx="1060" cy="175" r="260" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#161b22"/>
+      <stop offset="1" stop-color="#0d1117"/>
+    </radialGradient>
+  </defs>
 
   <rect width="1280" height="320" fill="#0d1117"/>
+  <rect width="1280" height="320" fill="url(#glow)"/>
+  <rect width="1280" height="320" fill="url(#dots)" mask="url(#fadeMask)"/>
+
+  <!-- 同心圆弧：以电视为中心，越外越淡 -->
+  <g fill="none" stroke-width="1">
+    <circle cx="1060" cy="175" r="150" stroke="#3d444d"/>
+    <circle cx="1060" cy="175" r="215" stroke="#3d444d" stroke-opacity="0.8" stroke-dasharray="2 8"/>
+    <circle cx="1060" cy="175" r="290" stroke="#3d444d" stroke-opacity="0.55"/>
+    <circle cx="1060" cy="175" r="380" stroke="#3d444d" stroke-opacity="0.35"/>
+    <path d="M 910 175 A 150 150 0 0 1 1060 25" stroke="#FB7299" stroke-opacity="0.55" stroke-width="1.5"/>
+  </g>
+
+  <!-- 斜向细线 -->
+  <g stroke="#30363d" stroke-width="1">
+    <line x1="700" y1="320" x2="900" y2="0" stroke-opacity="0.35"/>
+    <line x1="760" y1="320" x2="960" y2="0" stroke-opacity="0.2"/>
+    <line x1="1180" y1="320" x2="1280" y2="160" stroke-opacity="0.3"/>
+  </g>
+
   <rect y="0" width="1280" height="1" fill="#30363d"/>
   <rect y="319" width="1280" height="1" fill="#30363d"/>
 
   <text x="92" y="138" font-family="'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif" font-size="20" letter-spacing="10" fill="#8b949e">BILIBILI</text>
   <text x="90" y="200" font-family="'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif" font-size="54" font-weight="700" letter-spacing="1" fill="#e6edf3">INNOCENT <tspan fill="#FB7299">LAB</tspan></text>
 
+  <!-- 电视：面板填充遮住背后的圆弧与点阵 -->
+  <rect x="950" y="100" width="220" height="150" rx="18" fill="#0d1117"/>
   <g fill="none" stroke="#484f58" stroke-linecap="round">
     <path d="M 1028 100 L 1004 60" stroke-width="4"/>
     <path d="M 1092 100 L 1116 60" stroke-width="4"/>
